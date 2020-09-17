@@ -6,6 +6,7 @@
         "description": "Simple URL Shortener App",
         "termsOfService": "http://swagger.io/terms/",
         "contact": {
+            "name": "Santosh D Murudeshwar",
             "email": "santoshmurdesh@gmail.com"
         },
         "license": {
@@ -19,9 +20,86 @@
         }
     ],
     "paths": {
-
+        "/short-url": {
+            "summary": "API to get shortened URL",
+            "description": "This API takes long URL and will return shortened URL.",
+            "post": {
+                "requestBody": {
+                    "description": "Actual URL to be sent in as request body as data length can be very big.",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UrlModel"
+                            },
+                            "examples": {
+                                "getShortenedURL": {
+                                    "value": {
+                                        "longURL": "www.google.com"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "url"
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UrlModel"
+                                }
+                            }
+                        },
+                        "description": "Created short URL response."
+                    },
+                    "409": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UrlModel"
+                                }
+                            }
+                        },
+                        "description": "When URL is already shortned."
+                    },
+                    "400": {
+                        "description": "When service unable to shorten the URL."
+                    }
+                },
+                "operationId": "getShortenedURL",
+                "summary": "Request to get shortened url.",
+                "description": "Request to get shortened url."
+            }
+        }
     },
     "components": {
+        "schemas": {
+            "UrlModel": {
+                "description": "Model to store URL details such as shortURL, longURL and id.",
+                "required": [
+                    "longURL"
+                ],
+                "type": "object",
+                "properties": {
+                    "shortURL": {
+                        "description": "Shortened URL",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Unique ID of the URL - a metadata used by the API.",
+                        "type": "integer"
+                    },
+                    "longURL": {
+                        "description": "Long URL or actual URL.",
+                        "type": "string"
+                    }
+                }
+            }
+        },
         "securitySchemes": {
             "reflectoring_auth": {
                 "flows": {
