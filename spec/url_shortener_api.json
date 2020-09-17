@@ -1,0 +1,55 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "URL Shortener",
+        "version": "0.0.1-SNAPSHOT",
+        "description": "Simple URL Shortener App",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": "santoshmurdesh@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://reflectoring.swagger.io/"
+        }
+    ],
+    "paths": {
+
+    },
+    "components": {
+        "securitySchemes": {
+            "reflectoring_auth": {
+                "flows": {
+                    "implicit": {
+                        "authorizationUrl": "http://reflectoring.swagger.io/oauth/dialog",
+                        "scopes": {
+                            "write:users": "modify users",
+                            "read:users": "read users"
+                        }
+                    }
+                },
+                "type": "oauth2"
+            },
+            "api_key": {
+                "type": "apiKey",
+                "name": "api_key",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "url",
+            "description": "Tag to categorize url resources.",
+            "externalDocs": {
+                "description": "Find out more about our store",
+                "url": "http://swagger.io"
+            }
+        }
+    ]
+}
