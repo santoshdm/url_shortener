@@ -4,6 +4,7 @@
 1. Java 11  
 2. Maven - for build automation  
 3. OpenAPI spring generator - for clean boilerplate code generation  
+4. H2 in memory DB
 
 ### Project Structure
 Maven project with, 
@@ -21,7 +22,7 @@ Maven project with,
 1. API provides end point named `http://localhost:8080/short-url`, with POST request.  
 2. Request body includes URL to be shortened.  
 3. Response will have shortned URL with API generated ID(used by API).  
-4. Service uses in memory h2 DB (choose it for ease of development).  
+4. Service uses in memory h2 DB (chose it for ease of development).  
 5. OpenAPIGenerator named Spring is used  
     i. As it provides standard structure  
     ii. Helps in scaling the app very easily  
